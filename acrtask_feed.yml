@@ -1,14 +1,14 @@
 version: v1.0.0
 secrets:
     - id: searchServiceName
-      keyvault: https://acrunleashed.vault.azure.net/secrets/SearchServiceName
+      keyvault: https://unleashed.vault.azure.net/secrets/SearchServiceName
     - id: searchApiKey
-      keyvault: https://acrunleashed.vault.azure.net/secrets/SearchServiceApiKey
+      keyvault: https://unleashed.vault.azure.net/secrets/SearchServiceApiKey
 steps:
     - id: build-image
       build: -t {{.Run.Registry}}/blog-search:{{.Run.ID}} .
     - id: run-feed-index-container
-      cmd: {{.Run.Registry}}/blog-search:{{.Run.ID}}
+      cmd: {{.Run.Registry}}/blog-search:{{.Run.ID}} feed
         env:
             - THNS__AZ_SEARCH_ADMIN_KEY={{.Secrets.searchApiKey}}
             - THNS__AZ_SEARCH_SERVICE_NAME={{.Secrets.searchServiceName}}
