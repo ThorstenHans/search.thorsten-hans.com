@@ -10,5 +10,5 @@ steps:
     - id: run-feed-index-container
       cmd: {{.Run.Registry}}/blog-search:{{.Run.ID}} recreate
         env:
-            - THNS__AZ_SEARCH_ADMIN_KEY={{.Secrets.searchApiKey}}
-            - THNS__AZ_SEARCH_SERVICE_NAME={{.Secrets.searchServiceName}}
+            - THNS__AZ_SEARCH_ADMIN_KEY=foo
+            - THNS__AZ_SEARCH_SERVICE_NAME=bar
