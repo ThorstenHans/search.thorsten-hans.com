@@ -1,0 +1,130 @@
+{
+  "name": "blogposts",
+  "fields": [
+    {
+      "name": "id",
+      "type": "Edm.String",
+      "facetable": false,
+      "filterable": false,
+      "key": true,
+      "retrievable": true,
+      "searchable": false,
+      "sortable": false,
+      "analyzer": null,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
+      "name": "title",
+      "type": "Edm.String",
+      "facetable": false,
+      "filterable": true,
+      "key": false,
+      "retrievable": true,
+      "searchable": true,
+      "sortable": false,
+      "analyzer": null,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
+      "name": "description",
+      "type": "Edm.String",
+      "facetable": false,
+      "filterable": false,
+      "key": false,
+      "retrievable": true,
+      "searchable": true,
+      "sortable": false,
+      "analyzer": null,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
+      "name": "content",
+      "type": "Edm.String",
+      "facetable": false,
+      "filterable": false,
+      "key": false,
+      "retrievable": true,
+      "searchable": true,
+      "sortable": false,
+      "analyzer": null,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
+      "name": "url",
+      "type": "Edm.String",
+      "facetable": false,
+      "filterable": false,
+      "key": false,
+      "retrievable": true,
+      "searchable": true,
+      "sortable": false,
+      "analyzer": null,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
+      "name": "pubdate",
+      "type": "Edm.DateTimeOffset",
+      "facetable": true,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": true,
+      "analyzer": null,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
+      "name": "tags",
+      "type": "Collection(Edm.String)",
+      "facetable": true,
+      "filterable": true,
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "standard.lucene",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    }
+  ],
+  "scoringProfiles": [
+    {
+      "name": "boostLatest",
+      "functions": [
+        {
+          "fieldName": "pubdate",
+          "freshness": {
+            "boostingDuration": "P365D"
+          },
+          "interpolation": "quadratic",
+          "type": "freshness",
+          "boost": 4
+        }
+      ],
+      "text": {
+        "weights": {
+          "title": 5,
+          "tags": 3,
+          "description": 1
+        }
+      }
+    }
+  ],
+  "defaultScoringProfile": "boostLatest"
+}

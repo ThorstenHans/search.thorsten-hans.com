@@ -1,0 +1,9 @@
+{
+    "main": "search.thorsten-hans.com",
+    "description": "Azure Cognitive Search Integration for my personal blog",
+    "version": "0.0.1",
+    "dependencies": {
+        "gray-matter": "^4.0.2",
+        "remove-markdown": "^0.3.0"
+    }
+}
