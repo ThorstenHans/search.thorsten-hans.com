@@ -6,7 +6,7 @@ secrets:
       keyvault: https://unleashed.vault.azure.net/secrets/SearchServiceApiKey
 steps:
     - id: build-image
-      build: -t $Registry/blog-search:$ID .
+      build: -t $Registry/blog-search:1 .
       env:
         - THNS__AZ_SEARCH_ADMIN_KEY={{.Secrets.searchApiKey}}
           - THNS__AZ_SEARCH_SERVICE_NAME={{.Secrets.searchServiceName}}
