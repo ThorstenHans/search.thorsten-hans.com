@@ -9,8 +9,9 @@ steps:
       build: -t $Registry/blog-search:$ID .
       env:
         - THNS__AZ_SEARCH_ADMIN_KEY={{.Secrets.searchApiKey}}
-        - THNS__AZ_SEARCH_SERVICE_NAME={{.Secrets.searchServiceName}}
+          - THNS__AZ_SEARCH_SERVICE_NAME={{.Secrets.searchServiceName}}
     - id: push-image
-      push: $Registry/blog-search:$ID
+      push: 
+        - $Registry/blog-search:$ID
     - id: run-feed-index-container
       cmd: $Registry/blog-search:$ID
