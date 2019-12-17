@@ -7,3 +7,8 @@ secrets:
 steps:
     - id: build-image
       build: -t $Registry/blog-search:$ID .
+    - id: run-feed-index-container
+      cmd: $Registry/blog-search:$ID recreate
+         env:
+            - THNS__AZ_SEARCH_ADMIN_KEY={{.Secrets.searchApiKey}}
+            - THNS__AZ_SEARCH_SERVICE_NAME={{.Secrets.searchServiceName}}
