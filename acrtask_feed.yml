@@ -7,6 +7,9 @@ secrets:
 steps:
   - id: build-image
     build: -t {{.Run.Registry}}/blog-search:{{.Run.ID}} .
+  - id: push-image
+    push:
+    - {{.Run.Registry}}/blog-search:{{.Run.ID}}
   - id: run-feed-index-container
     cmd: {{.Run.Registry}}/blog-search:{{.Run.ID}} feed
     env:
