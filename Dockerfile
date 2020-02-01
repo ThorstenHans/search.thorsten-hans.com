@@ -25,8 +25,8 @@ ENV THNS__AZ_SEARCH_INDEX_NAME=blogposts
 # ENV THNS__AZ_SEARCH_SERVICE_NAME=
 
 # copy package.json and install deps
-COPY package.json package-lock.json ./
-RUN npm install --no-progress
+COPY package*.json ./
+RUN npm install
 
 # copy entire project to image
 COPY . .
