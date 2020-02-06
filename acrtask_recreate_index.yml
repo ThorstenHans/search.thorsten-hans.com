@@ -1,7 +1,0 @@
-version: v1.1.0
-steps:
-    - id: build-image
-      build: -t $Registry/blog-search:$ID .
-    - id: push-image
-      push: 
-        - $Registry/blog-search:$ID

@@ -1,0 +1,15 @@
+version: v1.1.0
+secrets:
+    - id: searchServiceName
+      keyvault: https://unleashed.vault.azure.net/secrets/SearchServiceName
+    - id: searchApiKey
+      keyvault: https://unleashed.vault.azure.net/secrets/SearchServiceApiKey
+steps:
+    - build: -t $Registry/build-index:$ID -f build-index.Dockerfile .
+    - push:
+          - $Registry/build-index:$ID
+    - cmd: $Registry/build-index:$ID
+      disableWorkingDirectoryOverride: true
+      env:
+          - THNS__AZ_SEARCH_ADMIN_KEY='{{.Secrets.searchApiKey}}'
+          - THNS__AZ_SEARCH_SERVICE_NAME='{{.Secrets.searchServiceName}}'
