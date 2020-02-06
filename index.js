@@ -37,8 +37,8 @@ switch (currentArgs[0]) {
         console.info('Feeding existing search index...');
         feeder.feed(options);
         break;
-    case 'recreate':
-        console.info('ReCreating Azure Cognitive Search index...');
+    case 'build':
+        console.info('Building Index for Azure Cognitive Search...');
         creater.recreate(options);
         break;
     default:
