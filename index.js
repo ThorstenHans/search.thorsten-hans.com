@@ -1,6 +1,6 @@
 const path = require('path'),
-    feeder = require('./lib/feed.index'),
-    creater = require('./lib/recreate.index');
+    feeder = require('./lib/feed'),
+    builder = require('./lib/build');
 
 
 const postsFolderName = process.env.THNS__POSTS_FOLDER_NAME;
@@ -39,7 +39,13 @@ switch (currentArgs[0]) {
         break;
     case 'build':
         console.info('Building Index for Azure Cognitive Search...');
-        creater.recreate(options);
+        builder.del(options)
+        .then(()=>{
+            return builder.build(options);
+        }).then(()=>{
+            console.info("Index creasted");
+        });
+
         break;
     default:
         console.info(`Please specify a supported commend (feed or recreate)`);
