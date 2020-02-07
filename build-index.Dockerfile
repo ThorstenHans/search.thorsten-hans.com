@@ -14,6 +14,8 @@ ENV THNS__AZ_SEARCH_INDEX_NAME=blogposts
 # sensitive environment variables should be passed as -e argument when building the image
 # ENV THNS__AZ_SEARCH_ADMIN_KEY=
 # ENV THNS__AZ_SEARCH_SERVICE_NAME=
+ENV THNS__POSTS_FOLDER_NAME=blog/_posts
+ENV THNS__BLOG_URL=https://thorsten-hans.com
 
 # copy package.json and install deps
 COPY package*.json ./
