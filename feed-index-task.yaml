@@ -5,7 +5,7 @@ secrets:
     - id: searchApiKey
       keyvault: https://unleashed.vault.azure.net/secrets/SearchServiceApiKey
 steps:
-    - build: -t $Registry/blog-search:$ID -f feed-index.Dockerfile .
+    - build: -t $Registry/feed-index:$ID -f feed-index.Dockerfile .
     - push:
           - $Registry/feed-index:$ID
     - cmd: $Registry/feed-index:$ID
